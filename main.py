@@ -7,12 +7,14 @@ window = Tk()
 window.title("Réservation de repas")
 window.geometry("1080x700")
 window.minsize(480,360)
+window.iconbitmap("assets/logo.ico")
+window.configure(bg="#F4B740")
 
 # Container Page 
 container = Frame(window,bg="blue")
-navBarContainer = Frame(window,bg="blue", bd=1 , relief="sunken")
+navBarContainer = Frame(window,bg="#56B908", bd=1 , relief="sunken")
 
-canvas = Canvas(container,bg="red")
+canvas = Canvas(container,bg="#FEFEFE")
 navBar = NavBar(navBarContainer,canvas)
 NavbarComponent = navBar.buildNavBar()
 i=1

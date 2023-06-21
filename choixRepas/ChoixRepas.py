@@ -4,7 +4,7 @@ class ChoixRepas() :
         self.canvas = canvas
         # Build la page choix des repas 
     def buildRepasPage(self) :
-        title = Label(self.canvas,text="Choix des repas")
+        title = Label(self.canvas,text="Choix des repas",bg="#FEFEFE")
         title.pack()
         
         

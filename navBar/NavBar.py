@@ -9,6 +9,6 @@ class NavBar :
     # Create navBar 
     def buildNavBar(self) -> tuple[Button] :
         pageBuilder = PageBuilder(self.canvas)
-        buttonAccueil = Button(self.container,text="Accueil", command=pageBuilder.homePage)
-        buttonChoixRepas = Button(self.container,text="Choix des repas", command=pageBuilder.choixRepas)
+        buttonAccueil = Button(self.container,text="Accueil", command=pageBuilder.homePage, bg="#FEFEFE")
+        buttonChoixRepas = Button(self.container,text="Choix des repas", command=pageBuilder.choixRepas, bg="#FEFEFE")
         return buttonAccueil,buttonChoixRepas
