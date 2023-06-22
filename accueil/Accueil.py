@@ -1,3 +1,4 @@
+import json
 from tkinter import *
 import requests
 
@@ -8,15 +9,14 @@ class Accueil:
     # Les 2 champs pour le formulaire
     usernameInput: Entry
     password: Entry
-    error: bool
     req: requests
 
     def __init__(self, contentContainer: Frame) -> None:
         self.contentContainer = contentContainer
-        self.error = FALSE
         self.req = requests
 
     def buildHome(self, message=None):
+        # Reset container
         for widget in self.contentContainer.winfo_children():
             widget.pack_forget()
         # TITRE DE LA PAGE
@@ -81,15 +81,18 @@ class Accueil:
         usernameValue = self.usernameInput.get()
         passwordValue = self.password.get()
         data = {"email": usernameValue, "password": passwordValue}
-        r = self.req.post("http://localhost:3000/auth/login", data)
-        print(r.json())
+        headers = {"Content-type": "application/json", "Accept": "text/plain"}
+        r = self.req.post(
+            "https://monbarquette.formaterz.fr/authentication_token",
+            json.dumps(data),
+            headers=headers,
+        )
+        print(r.status_code)
         # PASSER LA REQ
-        self.error = TRUE
-        if r.status_code == 200 | 201:
-            pageChoixRepas = ChoixRepas(self.contentContainer).buildRepasPage()
-            pass
+        if r.status_code == 200:
+            result = r.json()
+            token = result["token"]
+            pageChoixRepas = ChoixRepas(self.contentContainer, token).buildRepasPage()
         else:
-            message = r.json()["message"]
+            message = "Identifiant ou mot de passe incorect"
             self.buildHome(message)
-        # request = self.req.get("http://localhost:3000/repas")
-        # print(request.json())
