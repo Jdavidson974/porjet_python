@@ -9,5 +9,7 @@ class ChoixRepas:
         # Build la page choix des repas
 
     def buildRepasPage(self):
+        for widget in self.contentContainer.winfo_children():
+            widget.pack_forget()
         title = Label(self.contentContainer, text="Choix des repas", bg="#FEFEFE")
         title.pack()
