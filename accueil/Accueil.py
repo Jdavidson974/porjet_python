@@ -78,6 +78,9 @@ class Accueil:
     def submit(
         self,
     ):
+        # Pour l'authentification
+        # EMAIL : formation.etienne.re@gmail.com
+        # MDP : 123456
         usernameValue = self.usernameInput.get()
         passwordValue = self.password.get()
         data = {"email": usernameValue, "password": passwordValue}
