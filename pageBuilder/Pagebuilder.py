@@ -7,26 +7,26 @@ from accueil.Accueil import Accueil
 
 class PageBuilder :
     # Constructor 
-    def __init__(self,canvas : Canvas) -> None:
-        self.canvas = canvas
+    def __init__(self,contentContainer : Frame) -> None:
+        self.contentContainer = contentContainer
     # Page d'accueil 
     def homePage(self) :
 
-        for widget in self.canvas.winfo_children():
+        for widget in self.contentContainer.winfo_children():
             widget.pack_forget()
-        accueil = Accueil(self.canvas)
+        accueil = Accueil(self.contentContainer)
         accueil.buildHome()
 
     # Page choix des repas 
     def choixRepas(self) :
-        for widget in self.canvas.winfo_children():
+        for widget in self.contentContainer.winfo_children():
             widget.pack_forget()
-        choixRepas = ChoixRepas(self.canvas)
+        choixRepas = ChoixRepas(self.contentContainer)
         choixRepas.buildRepasPage()
         
     # Page reservation 
     def reserver(self) :
-        for widget in self.canvas.winfo_children():
+        for widget in self.contentContainer.winfo_children():
             widget.pack_forget()
-        title = Label(self.canvas,text="Reservation")
+        title = Label(self.contentContainer,text="Reservation")
         title.pack()
